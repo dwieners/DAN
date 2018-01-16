@@ -21,4 +21,7 @@ public interface RestApi {
 
     @GET("media/{featured_media}")
     Call<Media> getPostThumbnail(@Path("featured_media") int media);
+
+    @GET("media")
+    Call<List<Media>> getAllMedia();
 }
