@@ -2,6 +2,10 @@ package de.dominikwieners.musikvereinhusen.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +23,7 @@ import de.dominikwieners.musikvereinhusen.base.NucleusBaseAppCompatActivity;
 import de.dominikwieners.musikvereinhusen.model.Media;
 import de.dominikwieners.musikvereinhusen.model.Post;
 import de.dominikwieners.musikvereinhusen.repository.RestApi;
+import de.dominikwieners.musikvereinhusen.ui.adapter.PostAdapter;
 import de.dominikwieners.musikvereinhusen.ui.presenter.StartpagePresenter;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusAppCompatActivity;
@@ -35,11 +40,13 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
     @Inject
     Retrofit retrofit;
 
-    @BindView(R.id.infoField)
-    TextView textView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
-    @BindView(R.id.imageView)
-    ImageView imageView;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
+
+    PostAdapter postAdapter;
 
 
     @Override
@@ -48,12 +55,23 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
 
         ((MyApplication) getApplication()).getNetComponent().inject(this);
 
+        setSupportActionBar(toolbar);
+
+
         Call<List<Post>> posts = retrofit.create(RestApi.class).getPosts();
 
         posts.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                textView.setText(response.body().get(0).getTitle().getRendered());
+                List<Post> posts = response.body();
+
+                postAdapter = new PostAdapter(posts);
+
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                recycler.setLayoutManager(layoutManager);
+                recycler.setItemAnimator(new DefaultItemAnimator());
+                recycler.setAdapter(postAdapter);
+                recycler.hasFixedSize();
             }
 
             @Override
@@ -63,13 +81,17 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
         });
 
 
-
+         /*
         Call<List<Media>> allMedia = retrofit.create(RestApi.class).getAllMedia();
 
         allMedia.enqueue(new Callback<List<Media>>() {
             @Override
             public void onResponse(Call<List<Media>> call, Response<List<Media>> response) {
-                Glide.with(getApplicationContext()).load(response.body().get(0).getMediaImage().getUrl()).into(imageView);
+               Glide.with(getApplicationContext())
+                        .load(response.body().get(0).getMediaImage().getUrl())
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .centerCrop()
+                        .into(imageView);
             }
 
             @Override
@@ -77,6 +99,8 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
 
             }
         });
+        */
+
     }
 
 
