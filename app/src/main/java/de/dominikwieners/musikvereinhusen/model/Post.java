@@ -3,33 +3,36 @@ package de.dominikwieners.musikvereinhusen.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by dominikwieners on 15.01.18.
+ * Created by dominikwieners on 18.01.18.
  */
 
 public class Post {
 
+    @SerializedName("albumId")
+    int ablumId;
 
     @SerializedName("id")
-    private int id;
-
-    @SerializedName("featured_media")
-    private int featured_media;
+    int id;
 
     @SerializedName("title")
-    private Title title;
+    String title;
 
-    @SerializedName("excerpt")
-    private Excerpt excerpt;
+    @SerializedName("thumbnailUrl")
+    String thumbnailUrl;
 
-    @SerializedName("content")
-    private Content content;
-
-    public Post(int id, int featured_media, Title title, Excerpt excerpt, Content content) {
+    public Post(int ablumId, int id, String title, String thumbnailUrl) {
+        this.ablumId = ablumId;
         this.id = id;
-        this.featured_media = featured_media;
         this.title = title;
-        this.excerpt = excerpt;
-        this.content = content;
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public int getAblumId() {
+        return ablumId;
+    }
+
+    public void setAblumId(int ablumId) {
+        this.ablumId = ablumId;
     }
 
     public int getId() {
@@ -40,35 +43,19 @@ public class Post {
         this.id = id;
     }
 
-    public int getFeatured_media() {
-        return featured_media;
-    }
-
-    public void setFeatured_media(int featured_media) {
-        this.featured_media = featured_media;
-    }
-
-    public Title getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(Title title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public Excerpt getExcerpt() {
-        return excerpt;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setExcerpt(Excerpt excerpt) {
-        this.excerpt = excerpt;
-    }
-
-    public Content getContent() {
-        return content;
-    }
-
-    public void setContent(Content content) {
-        this.content = content;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

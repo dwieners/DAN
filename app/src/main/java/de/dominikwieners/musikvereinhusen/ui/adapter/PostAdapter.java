@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import de.dominikwieners.musikvereinhusen.R;
-import de.dominikwieners.musikvereinhusen.model.Media;
 import de.dominikwieners.musikvereinhusen.model.Post;
 import de.dominikwieners.musikvereinhusen.repository.RestApi;
 import de.dominikwieners.musikvereinhusen.ui.viewholder.PostViewHolder;
@@ -48,24 +49,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
         Post post = postList.get(position);
-        holder.bindPost(post);
 
-        setAnimation(holder.itemView, position);
+        holder.tvExcerpt.setText(post.getTitle());
+        Glide.with(context)
+                .load(post.getThumbnailUrl())
+                .placeholder(R.drawable.ic_launcher_background)
+                .centerCrop()
+                .into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
         return postList.size();
-    }
-
-    public void  setAnimation(View view, int position) {
-        if (position > lastPosition){
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.listitem_up);
-            animation.setStartOffset(position * 100);
-            view.startAnimation(animation);
-
-            lastPosition = position;
-        }
     }
 
 

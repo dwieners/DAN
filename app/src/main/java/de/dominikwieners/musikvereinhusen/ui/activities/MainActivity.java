@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +22,6 @@ import butterknife.BindView;
 import de.dominikwieners.musikvereinhusen.R;
 import de.dominikwieners.musikvereinhusen.base.MyApplication;
 import de.dominikwieners.musikvereinhusen.base.NucleusBaseAppCompatActivity;
-import de.dominikwieners.musikvereinhusen.model.Media;
 import de.dominikwieners.musikvereinhusen.model.Post;
 import de.dominikwieners.musikvereinhusen.repository.RestApi;
 import de.dominikwieners.musikvereinhusen.ui.adapter.PostAdapter;
@@ -48,7 +49,6 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
 
     PostAdapter postAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +66,18 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
                 List<Post> posts = response.body();
 
                 postAdapter = new PostAdapter(posts);
-
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 recycler.setLayoutManager(layoutManager);
                 recycler.setItemAnimator(new DefaultItemAnimator());
                 recycler.setAdapter(postAdapter);
                 recycler.hasFixedSize();
+
+                final LayoutAnimationController controller =
+                        AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_from_bottom);
+
+                recycler.setLayoutAnimation(controller);
+                recycler.getAdapter().notifyDataSetChanged();
+                recycler.scheduleLayoutAnimation();
             }
 
             @Override
@@ -80,37 +86,10 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
             }
         });
 
-
-         /*
-        Call<List<Media>> allMedia = retrofit.create(RestApi.class).getAllMedia();
-
-        allMedia.enqueue(new Callback<List<Media>>() {
-            @Override
-            public void onResponse(Call<List<Media>> call, Response<List<Media>> response) {
-               Glide.with(getApplicationContext())
-                        .load(response.body().get(0).getMediaImage().getUrl())
-                        .placeholder(R.drawable.ic_launcher_background)
-                        .centerCrop()
-                        .into(imageView);
-            }
-
-            @Override
-            public void onFailure(Call<List<Media>> call, Throwable t) {
-
-            }
-        });
-        */
-
     }
-
-
-
-
 
     @Override
     public int getLayout() {
         return R.layout.activity_main;
     }
-
-
 }

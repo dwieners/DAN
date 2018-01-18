@@ -21,7 +21,7 @@ public class MyApplication extends Application {
 
         netComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("http://musikverein-husen.de/wp-json/wp/v2/")).build();
+                .netModule(new NetModule("https://jsonplaceholder.typicode.com/")).build();
     }
 
     public NetComponent getNetComponent() {
