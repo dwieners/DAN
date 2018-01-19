@@ -37,7 +37,6 @@ import retrofit2.Retrofit;
 @RequiresPresenter(StartpagePresenter.class)
 public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresenter> {
 
-
     @Inject
     Retrofit retrofit;
 

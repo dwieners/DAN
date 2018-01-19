@@ -20,6 +20,9 @@ import de.dominikwieners.musikvereinhusen.ui.activities.DetailActivity;
 
 public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+    private final String CURRENT_POST = "arg_current_post";
+    private final String CURRENT_IMG_URL = "arg_current_img_url";
+
     @BindView(R.id.iv_post)
     public ImageView imageView;
 
@@ -29,6 +32,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @BindView(R.id.tv_post_excerpt)
     public TextView tvExcerpt;
 
+    private Post post;
+
     public PostViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -36,10 +41,19 @@ public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         itemView.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(view.getContext(), DetailActivity.class);
+        intent.putExtra(CURRENT_POST, getDataForIntent().getTitle());
+        intent.putExtra(CURRENT_IMG_URL, getDataForIntent().getThumbnailUrl());
         view.getContext().startActivity(intent);
+    }
+
+    public void setDataForIntent(Post post){
+        this.post = post;
+    }
+
+    public Post getDataForIntent(){
+        return post;
     }
 }

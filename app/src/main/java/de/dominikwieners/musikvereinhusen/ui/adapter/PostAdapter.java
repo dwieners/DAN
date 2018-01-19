@@ -33,8 +33,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     private Context context;
     private List<Post> postList;
 
-    private int lastPosition = -1;
-
     public PostAdapter(List<Post> postList) {
         this.postList = postList;
     }
@@ -56,6 +54,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 .placeholder(R.drawable.ic_launcher_background)
                 .centerCrop()
                 .into(holder.imageView);
+
+        holder.setDataForIntent(post);
     }
 
     @Override
