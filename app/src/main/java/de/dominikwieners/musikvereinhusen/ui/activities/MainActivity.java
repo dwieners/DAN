@@ -60,15 +60,21 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
         posts.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                List<Post> posts = response.body();
-                postAdapter = new PostAdapter(posts);
-                recycler.setPosts(getApplicationContext(),postAdapter);
+                recycler.setPosts(getApplicationContext(),getPostAdapter(getPosts(response)));
             }
 
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
             }
         });
+    }
+
+    protected List<Post> getPosts( Response<List<Post>> response){
+        return  response.body();
+    }
+
+    protected PostAdapter getPostAdapter(List<Post> posts){
+        return  new PostAdapter(posts);
     }
 
     @Override
