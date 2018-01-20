@@ -33,7 +33,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-
 @RequiresPresenter(StartpagePresenter.class)
 public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresenter> {
 
@@ -44,7 +43,7 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
     Toolbar toolbar;
 
     @BindView(R.id.recycler)
-    RecyclerView recycler;
+    PostRecycler recycler;
 
     PostAdapter postAdapter;
 
@@ -56,35 +55,20 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
 
         setSupportActionBar(toolbar);
 
-
         Call<List<Post>> posts = retrofit.create(RestApi.class).getPosts();
 
         posts.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 List<Post> posts = response.body();
-
                 postAdapter = new PostAdapter(posts);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                recycler.setLayoutManager(layoutManager);
-                recycler.setItemAnimator(new DefaultItemAnimator());
-                recycler.setAdapter(postAdapter);
-                recycler.hasFixedSize();
-
-                final LayoutAnimationController controller =
-                        AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_from_bottom);
-
-                recycler.setLayoutAnimation(controller);
-                recycler.getAdapter().notifyDataSetChanged();
-                recycler.scheduleLayoutAnimation();
+                recycler.setPosts(getApplicationContext(),postAdapter);
             }
 
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-
             }
         });
-
     }
 
     @Override
