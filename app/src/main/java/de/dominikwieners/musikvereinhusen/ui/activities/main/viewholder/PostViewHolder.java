@@ -1,5 +1,7 @@
 package de.dominikwieners.musikvereinhusen.ui.activities.main.viewholder;
 
+import android.app.Activity;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,7 +41,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @Override
     public void onClick(View view) {
         PostIntent intent = new PostIntent(view.getContext(), DetailActivity.class, post);
-        view.getContext().startActivity(intent);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) view.getContext(), imageView, view.getContext().getString(R.string.shared_item_image));
+        view.getContext().startActivity(intent, activityOptionsCompat.toBundle());
     }
 
     public void setPostIntentData(PostIntentData postIntentData){
