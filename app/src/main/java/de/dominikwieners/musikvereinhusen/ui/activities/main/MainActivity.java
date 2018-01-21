@@ -2,6 +2,8 @@ package de.dominikwieners.musikvereinhusen.ui.activities.main;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
     @BindView(R.id.recycler)
     PostRecycler recycler;
 
+    @BindView(R.id.progress)
+    ProgressBar progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +42,9 @@ public class MainActivity extends NucleusBaseAppCompatActivity<StartpagePresente
         ((MyApplication) getApplication()).getNetComponent().inject(this);
 
         setSupportActionBar(toolbar);
-
+        progress.setVisibility(View.VISIBLE);
         Call<List<Post>> posts = retrofit.create(RestApi.class).getPosts();
-
-        PostCallback callback = new PostCallback(getApplicationContext(), recycler);
-
+        PostCallback callback = new PostCallback(getApplicationContext(), recycler, progress);
         posts.enqueue(callback);
 
     }
