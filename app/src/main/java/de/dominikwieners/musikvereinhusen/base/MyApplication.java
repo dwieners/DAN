@@ -2,7 +2,6 @@ package de.dominikwieners.musikvereinhusen.base;
 
 import android.app.Application;
 
-import dagger.Module;
 import de.dominikwieners.musikvereinhusen.base.components.DaggerNetComponent;
 import de.dominikwieners.musikvereinhusen.base.components.NetComponent;
 import de.dominikwieners.musikvereinhusen.base.modules.AppModule;

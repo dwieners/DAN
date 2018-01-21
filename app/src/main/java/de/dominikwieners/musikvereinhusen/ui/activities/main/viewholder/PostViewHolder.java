@@ -1,20 +1,16 @@
-package de.dominikwieners.musikvereinhusen.ui.viewholder;
+package de.dominikwieners.musikvereinhusen.ui.activities.main.viewholder;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.dominikwieners.musikvereinhusen.intents.PostIntent;
 import de.dominikwieners.musikvereinhusen.R;
-import de.dominikwieners.musikvereinhusen.model.Post;
-import de.dominikwieners.musikvereinhusen.ui.activities.DetailActivity;
-import de.dominikwieners.musikvereinhusen.ui.activities.PostIntent;
-import de.dominikwieners.musikvereinhusen.ui.activities.PostIntentData;
+import de.dominikwieners.musikvereinhusen.ui.activities.detail.DetailActivity;
+import de.dominikwieners.musikvereinhusen.intents.PostIntentData;
 
 /**
  * Created by dominikwieners on 16.01.18.
@@ -45,4 +41,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         PostIntent intent = new PostIntent(view.getContext(), DetailActivity.class, post);
         view.getContext().startActivity(intent);
     }
+
+    public void setPostIntentData(PostIntentData postIntentData){
+        this.post = postIntentData;
+
+
+    }
+
 }

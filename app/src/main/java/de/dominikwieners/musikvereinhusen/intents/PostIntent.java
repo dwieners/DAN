@@ -1,15 +1,13 @@
-package de.dominikwieners.musikvereinhusen.ui.activities;
+package de.dominikwieners.musikvereinhusen.intents;
 
 import android.content.Context;
 import android.content.Intent;
-
-import javax.inject.Inject;
 
 /**
  * Created by dominikwieners on 21.01.18.
  */
 
-public class PostIntent extends Intent{
+public class PostIntent extends Intent {
 
     private final String CURRENT_POST = "arg_current_post";
     private final String CURRENT_IMG_URL = "arg_current_img_url";

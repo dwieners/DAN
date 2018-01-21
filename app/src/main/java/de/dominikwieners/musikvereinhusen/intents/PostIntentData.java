@@ -1,4 +1,4 @@
-package de.dominikwieners.musikvereinhusen.ui.activities;
+package de.dominikwieners.musikvereinhusen.intents;
 
 /**
  * Created by dominikwieners on 21.01.18.

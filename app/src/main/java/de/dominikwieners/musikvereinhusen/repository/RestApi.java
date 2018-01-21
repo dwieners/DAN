@@ -5,7 +5,6 @@ import java.util.List;
 import de.dominikwieners.musikvereinhusen.model.Post;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 /**
  * Created by dominikwieners on 15.01.18.

@@ -1,13 +1,10 @@
-package de.dominikwieners.musikvereinhusen.ui.activities;
+package de.dominikwieners.musikvereinhusen.ui.activities.main;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.telecom.Call;
 
 import java.util.List;
 
 import de.dominikwieners.musikvereinhusen.model.Post;
-import de.dominikwieners.musikvereinhusen.ui.adapter.PostAdapter;
 import retrofit2.Callback;
 import retrofit2.Response;
 

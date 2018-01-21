@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.dominikwieners.musikvereinhusen.ui.activities.MainActivity">
+    tools:context=".ui.activities.main.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,7 +18,7 @@
         app:titleTextColor="@android:color/white"/>
 
 
-    <de.dominikwieners.musikvereinhusen.ui.activities.PostRecycler
+    <de.dominikwieners.musikvereinhusen.ui.activities.main.PostRecycler
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -2,7 +2,6 @@ package de.dominikwieners.musikvereinhusen.base.modules;
 
 import android.app.Application;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

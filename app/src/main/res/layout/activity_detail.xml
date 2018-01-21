@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="de.dominikwieners.musikvereinhusen.ui.activities.DetailActivity">
+    tools:context="de.dominikwieners.musikvereinhusen.ui.activities.detail.DetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app-bar"
@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary">
 
 
             <ImageView
@@ -36,6 +36,7 @@
                 app:layout_collapseMode="pin"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
 

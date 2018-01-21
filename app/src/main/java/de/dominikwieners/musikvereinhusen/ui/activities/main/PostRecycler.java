@@ -1,4 +1,4 @@
-package de.dominikwieners.musikvereinhusen.ui.activities;
+package de.dominikwieners.musikvereinhusen.ui.activities.main;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -9,11 +9,7 @@ import android.util.AttributeSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 
-import java.util.List;
-
 import de.dominikwieners.musikvereinhusen.R;
-import de.dominikwieners.musikvereinhusen.model.Post;
-import de.dominikwieners.musikvereinhusen.ui.adapter.PostAdapter;
 
 /**
  * Created by dominikwieners on 21.01.18.

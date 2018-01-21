@@ -1,6 +1,6 @@
-package de.dominikwieners.musikvereinhusen.ui.presenter;
+package de.dominikwieners.musikvereinhusen.presenter;
 
-import de.dominikwieners.musikvereinhusen.ui.activities.MainActivity;
+import de.dominikwieners.musikvereinhusen.ui.activities.main.MainActivity;
 import nucleus.presenter.RxPresenter;
 
 /**

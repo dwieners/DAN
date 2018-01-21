@@ -3,7 +3,7 @@ package de.dominikwieners.musikvereinhusen.base.components;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import de.dominikwieners.musikvereinhusen.ui.activities.MainActivity;
+import de.dominikwieners.musikvereinhusen.ui.activities.main.MainActivity;
 import de.dominikwieners.musikvereinhusen.base.modules.AppModule;
 import de.dominikwieners.musikvereinhusen.base.modules.NetModule;
 

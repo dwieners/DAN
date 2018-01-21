@@ -2,7 +2,7 @@ package de.dominikwieners.musikvereinhusen.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import de.dominikwieners.musikvereinhusen.ui.activities.PostIntentData;
+import de.dominikwieners.musikvereinhusen.intents.PostIntentData;
 
 /**
  * Created by dominikwieners on 18.01.18.

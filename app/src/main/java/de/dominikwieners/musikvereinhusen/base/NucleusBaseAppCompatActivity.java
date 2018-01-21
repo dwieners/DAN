@@ -20,5 +20,4 @@ public abstract class NucleusBaseAppCompatActivity<P extends Presenter> extends 
 
     public abstract int getLayout();
 
-
 }
