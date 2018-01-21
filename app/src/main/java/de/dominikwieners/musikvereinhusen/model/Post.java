@@ -2,11 +2,13 @@ package de.dominikwieners.musikvereinhusen.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import de.dominikwieners.musikvereinhusen.ui.activities.PostIntentData;
+
 /**
  * Created by dominikwieners on 18.01.18.
  */
 
-public class Post {
+public class Post implements PostIntentData {
 
     @SerializedName("albumId")
     int ablumId;
@@ -43,6 +45,7 @@ public class Post {
         this.id = id;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
@@ -51,6 +54,7 @@ public class Post {
         this.title = title;
     }
 
+    @Override
     public String getThumbnailUrl() {
         return thumbnailUrl;
     }
