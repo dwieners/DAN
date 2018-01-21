@@ -81,6 +81,7 @@ public class DetailActivity extends NucleusBaseAppCompatActivity<DetailPresenter
         }
     }
 
+
     private void setImageForToolbar(ImageView imageView, String imageUrl){
         Glide.with(getApplicationContext())
                 .load(imageUrl)
